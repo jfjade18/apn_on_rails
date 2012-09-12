@@ -6,6 +6,8 @@ class CreateApnApps < ActiveRecord::Migration # :nodoc:
 
       t.timestamps
     end
+
+    add_column :apn_devices, :app_id, :integer
   end
 
   def self.down

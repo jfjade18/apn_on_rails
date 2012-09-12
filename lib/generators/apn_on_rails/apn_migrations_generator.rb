@@ -8,6 +8,7 @@ require 'rails/generators/active_record'
 
 class ApnMigrationsGenerator < Rails::Generators::Base
   argument :name, :default => "migration"
+  @timestamp = Time.now.utc.strftime("%Y%m%d%H%M%S")
   include Rails::Generators::Migration
 
   def self.source_root
@@ -15,11 +16,8 @@ class ApnMigrationsGenerator < Rails::Generators::Base
   end
 
   def self.next_migration_number(dirname)
-     if ActiveRecord::Base.timestamped_migrations
-       Time.now.utc.strftime("%Y%m%d%H%M%S")
-     else
-       "%.3d" % (current_migration_number(dirname) + 1)
-     end
+    @timestamp = @timestamp.succ
+    @timestamp
   end
 
   def create_migrations
