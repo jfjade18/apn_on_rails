@@ -8,7 +8,6 @@ class CreateApnApps < ActiveRecord::Migration # :nodoc:
     end
 
     add_column :apn_devices, :app_id, :integer
-    
   end
 
   def self.down

@@ -1,19 +1,20 @@
 module DeviceFactory
-  
+
   class << self
-    
+
     def new(options = {})
       app = APN::App.first
       options = {:token => DeviceFactory.random_token, :app_id => app.id}.merge(options)
+      binding.pry
       return APN::Device.new(options)
     end
-    
+
     def create(options = {})
       device = DeviceFactory.new(options)
       device.save
       return device
     end
-    
+
     def random_token
       tok = []
       8.times do
@@ -21,9 +22,9 @@ module DeviceFactory
       end
       tok.join(' ').downcase
     end
-    
+
   end
-  
+
 end
 
 DeviceFactory.create

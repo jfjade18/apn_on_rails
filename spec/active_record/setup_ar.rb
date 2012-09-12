@@ -1,3 +1,4 @@
+require 'logger'
 require 'rubygems'
 require 'active_record'
 
@@ -14,6 +15,6 @@ ActiveRecord::Base.establish_connection({
   :database => db_file
 })
 
-ActiveRecord::Migrator.up(File.join(File.dirname(__FILE__), '..', '..', 'generators', 'templates', 'apn_migrations'))
+ActiveRecord::Migrator.up(File.join(File.dirname(__FILE__), '..', '..', 'lib', 'generators', 'templates', 'apn_migrations'))
 
 # raise hell

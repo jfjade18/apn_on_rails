@@ -14,11 +14,11 @@ class APN::App < APN::Base
 
   # Opens a connection to the Apple APN server and attempts to batch deliver
   # an Array of group notifications.
-  # 
-  # 
+  #
+  #
   # As each APN::GroupNotification is sent the <tt>sent_at</tt> column will be timestamped,
   # so as to not be sent again.
-  # 
+  #
   def send_notifications
     if self.cert.nil?
       raise APN::Errors::MissingCertificateError.new
@@ -115,7 +115,7 @@ class APN::App < APN::Base
   # accepting notifications then the device is deleted. Otherwise
   # it is assumed that the application has been re-installed
   # and is available for notifications.
-  # 
+  #
   # This can be run from the following Rake task:
   #   $ rake apn:feedback:process
   def process_devices
