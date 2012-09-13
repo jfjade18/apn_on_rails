@@ -5,16 +5,17 @@
 
 Gem::Specification.new do |s|
   s.name = "apn_on_rails"
-  s.version = "0.5.0"
+  s.version = "0.5.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mark Bates", "Rebecca Nesson", "Rami Grossman", "natescherer", "Jed Seculles"]
-  s.date = "2012-09-12"
+  s.date = "2012-09-13"
   s.description = "APN on Rails is a Ruby on Rails gem that allows you to\neasily add Apple Push Notification (iPhone) support to your Rails application.\n"
   s.email = "jfjade18@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README",
+    "README.md",
     "README.textile"
   ]
   s.files = [
@@ -44,6 +45,19 @@ Gem::Specification.new do |s|
     "lib/apn_on_rails/tasks/apn.rake",
     "lib/apn_on_rails/tasks/db.rake",
     "lib/apn_on_rails_tasks.rb",
+    "lib/generators/apn_on_rails/apn_migrations_generator.rb",
+    "lib/generators/apn_on_rails/templates/001_create_apn_devices.rb",
+    "lib/generators/apn_on_rails/templates/002_create_apn_notifications.rb",
+    "lib/generators/apn_on_rails/templates/003_alter_apn_devices.rb",
+    "lib/generators/apn_on_rails/templates/004_create_apn_apps.rb",
+    "lib/generators/apn_on_rails/templates/005_create_groups.rb",
+    "lib/generators/apn_on_rails/templates/006_alter_apn_groups.rb",
+    "lib/generators/apn_on_rails/templates/007_create_device_groups.rb",
+    "lib/generators/apn_on_rails/templates/008_create_apn_group_notifications.rb",
+    "lib/generators/apn_on_rails/templates/009_create_pull_notifications.rb",
+    "lib/generators/apn_on_rails/templates/010_alter_apn_notifications.rb",
+    "lib/generators/apn_on_rails/templates/011_make_device_token_index_nonunique.rb",
+    "lib/generators/apn_on_rails/templates/012_add_launch_notification_to_apn_pull_notifications.rb",
     "spec/active_record/setup_ar.rb",
     "spec/apn_on_rails/app/models/apn/app_spec.rb",
     "spec/apn_on_rails/app/models/apn/device_spec.rb",
@@ -77,33 +91,36 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<configatron>, [">= 0"])
       s.add_development_dependency(%q<autotest>, [">= 0"])
       s.add_development_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_development_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 2.0.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.0"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
-      s.add_development_dependency(%q<actionpack>, ["~> 3.2.0"])
-      s.add_development_dependency(%q<activerecord>, ["~> 3.2.0"])
+      s.add_development_dependency(%q<rails>, ["~> 3.2.0"])
+      s.add_development_dependency(%q<pry>, [">= 0"])
     else
       s.add_dependency(%q<configatron>, [">= 0"])
       s.add_dependency(%q<autotest>, [">= 0"])
       s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+      s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 2.0.0"])
       s.add_dependency(%q<bundler>, ["~> 1.1.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.0"])
       s.add_dependency(%q<rcov>, [">= 0"])
-      s.add_dependency(%q<actionpack>, ["~> 3.2.0"])
-      s.add_dependency(%q<activerecord>, ["~> 3.2.0"])
+      s.add_dependency(%q<rails>, ["~> 3.2.0"])
+      s.add_dependency(%q<pry>, [">= 0"])
     end
   else
     s.add_dependency(%q<configatron>, [">= 0"])
     s.add_dependency(%q<autotest>, [">= 0"])
     s.add_dependency(%q<sqlite3-ruby>, [">= 0"])
+    s.add_dependency(%q<sqlite3>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 2.0.0"])
     s.add_dependency(%q<bundler>, ["~> 1.1.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.0"])
     s.add_dependency(%q<rcov>, [">= 0"])
-    s.add_dependency(%q<actionpack>, ["~> 3.2.0"])
-    s.add_dependency(%q<activerecord>, ["~> 3.2.0"])
+    s.add_dependency(%q<rails>, ["~> 3.2.0"])
+    s.add_dependency(%q<pry>, [">= 0"])
   end
 end
 

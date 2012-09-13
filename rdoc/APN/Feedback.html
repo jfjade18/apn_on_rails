@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>module APN::Feedback - apn 0.5.1</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/apn_on_rails/libs/feedback.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-devices">::devices</a>
+    
+    <li><a href="#method-c-process_devices">::process_devices</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../APN.html">APN</a>
+  
+    <li><a href="../APN/App.html">APN::App</a>
+  
+    <li><a href="../APN/Connection.html">APN::Connection</a>
+  
+    <li><a href="../APN/Device.html">APN::Device</a>
+  
+    <li><a href="../APN/DeviceGrouping.html">APN::DeviceGrouping</a>
+  
+    <li><a href="../APN/Errors.html">APN::Errors</a>
+  
+    <li><a href="../APN/Errors/ExceededMessageSizeError.html">APN::Errors::ExceededMessageSizeError</a>
+  
+    <li><a href="../APN/Errors/MissingCertificateError.html">APN::Errors::MissingCertificateError</a>
+  
+    <li><a href="../APN/Feedback.html">APN::Feedback</a>
+  
+    <li><a href="../APN/Group.html">APN::Group</a>
+  
+    <li><a href="../APN/GroupNotification.html">APN::GroupNotification</a>
+  
+    <li><a href="../APN/Notification.html">APN::Notification</a>
+  
+    <li><a href="../APN/PullNotification.html">APN::PullNotification</a>
+  
+    <li><a href="../ApnOnRails.html">ApnOnRails</a>
+  
+    <li><a href="../ApnOnRails/Railtie.html">ApnOnRails::Railtie</a>
+  
+    <li><a href="../AddLaunchNotificationToApnPullNotifications.html">AddLaunchNotificationToApnPullNotifications</a>
+  
+    <li><a href="../ApnMigrationsGenerator.html">ApnMigrationsGenerator</a>
+  
+    <li><a href="../CreatePullNotifications.html">CreatePullNotifications</a>
+  
+    <li><a href="../MakeDeviceTokenIndexNonunique.html">MakeDeviceTokenIndexNonunique</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module APN::Feedback</h1>
+
+  <div id="description" class="description">
+    
+<p>Module for talking to the Apple <a href="Feedback.html">Feedback</a>
+Service. The service is meant to let you know when a device is no longer
+registered to receive notifications for your application.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-devices" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">devices</span><span
+            class="method-args">(cert, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns an Array of <a href="Device.html">APN::Device</a> objects that has
+received feedback from Apple. Each <a href="Device.html">APN::Device</a>
+will have it's <code>feedback_at</code> accessor marked with the time that
+Apple believes the device de-registered itself.</p>
+          
+
+          
+          <div class="method-source-code" id="devices-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/libs/feedback.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">devices</span>(<span class="ruby-identifier">cert</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">devices</span> = []
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">cert</span>.<span class="ruby-identifier">nil?</span> 
+  <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">open_for_feedback</span>({<span class="ruby-value">:cert</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cert</span>}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conn</span>, <span class="ruby-identifier">sock</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">while</span> <span class="ruby-identifier">line</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">38</span>)   <span class="ruby-comment"># Read 38 bytes from the SSL socket</span>
+      <span class="ruby-identifier">feedback</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">'N1n1H140'</span>)
+      <span class="ruby-identifier">token</span> = <span class="ruby-identifier">feedback</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">strip</span>
+      <span class="ruby-identifier">device</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Device</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:first</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:token</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">token</span>})
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">device</span>
+        <span class="ruby-identifier">device</span>.<span class="ruby-identifier">feedback_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">feedback</span>[<span class="ruby-value">0</span>])
+        <span class="ruby-identifier">devices</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">device</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">devices</span>.<span class="ruby-identifier">each</span>(&amp;<span class="ruby-identifier">block</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">devices</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- devices-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- devices-method -->
+
+    
+      <div id="method-c-process_devices" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_devices</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_devices-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/libs/feedback.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_devices</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;The method APN::Feedback.process_devices is deprecated.  Use APN::App.process_devices instead.&quot;</span>)
+  <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">process_devices</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_devices-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_devices-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

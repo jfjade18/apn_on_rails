@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>class APN::App - apn 0.5.1</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/apn_on_rails/app/models/apn/app.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">APN::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-process_devices">::process_devices</a>
+    
+    <li><a href="#method-c-process_devices_for_cert">::process_devices_for_cert</a>
+    
+    <li><a href="#method-c-send_group_notifications">::send_group_notifications</a>
+    
+    <li><a href="#method-c-send_notifications">::send_notifications</a>
+    
+    <li><a href="#method-c-send_notifications_for_cert">::send_notifications_for_cert</a>
+    
+    <li><a href="#method-i-cert">#cert</a>
+    
+    <li><a href="#method-i-log_connection_exception">#log_connection_exception</a>
+    
+    <li><a href="#method-i-process_devices">#process_devices</a>
+    
+    <li><a href="#method-i-send_group_notification">#send_group_notification</a>
+    
+    <li><a href="#method-i-send_group_notifications">#send_group_notifications</a>
+    
+    <li><a href="#method-i-send_notifications">#send_notifications</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../APN.html">APN</a>
+  
+    <li><a href="../APN/App.html">APN::App</a>
+  
+    <li><a href="../APN/Connection.html">APN::Connection</a>
+  
+    <li><a href="../APN/Device.html">APN::Device</a>
+  
+    <li><a href="../APN/DeviceGrouping.html">APN::DeviceGrouping</a>
+  
+    <li><a href="../APN/Errors.html">APN::Errors</a>
+  
+    <li><a href="../APN/Errors/ExceededMessageSizeError.html">APN::Errors::ExceededMessageSizeError</a>
+  
+    <li><a href="../APN/Errors/MissingCertificateError.html">APN::Errors::MissingCertificateError</a>
+  
+    <li><a href="../APN/Feedback.html">APN::Feedback</a>
+  
+    <li><a href="../APN/Group.html">APN::Group</a>
+  
+    <li><a href="../APN/GroupNotification.html">APN::GroupNotification</a>
+  
+    <li><a href="../APN/Notification.html">APN::Notification</a>
+  
+    <li><a href="../APN/PullNotification.html">APN::PullNotification</a>
+  
+    <li><a href="../ApnOnRails.html">ApnOnRails</a>
+  
+    <li><a href="../ApnOnRails/Railtie.html">ApnOnRails::Railtie</a>
+  
+    <li><a href="../AddLaunchNotificationToApnPullNotifications.html">AddLaunchNotificationToApnPullNotifications</a>
+  
+    <li><a href="../ApnMigrationsGenerator.html">ApnMigrationsGenerator</a>
+  
+    <li><a href="../CreatePullNotifications.html">CreatePullNotifications</a>
+  
+    <li><a href="../MakeDeviceTokenIndexNonunique.html">MakeDeviceTokenIndexNonunique</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class APN::App</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-process_devices" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_devices</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="App.html#method-i-process_devices">#process_devices</a></p>
+          
+
+          
+          <div class="method-source-code" id="process_devices-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_devices</span>
+  <span class="ruby-identifier">apps</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-identifier">apps</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">app</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">app</span>.<span class="ruby-identifier">process_devices</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">cert</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">global_cert</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">cert</span>)
+    <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">process_devices_for_cert</span>(<span class="ruby-identifier">global_cert</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_devices-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_devices-method -->
+
+    
+      <div id="method-c-process_devices_for_cert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_devices_for_cert</span><span
+            class="method-args">(the_cert)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_devices_for_cert-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_devices_for_cert</span>(<span class="ruby-identifier">the_cert</span>)
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;in APN::App.process_devices_for_cert&quot;</span>
+  <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Feedback</span>.<span class="ruby-identifier">devices</span>(<span class="ruby-identifier">the_cert</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">device</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">device</span>.<span class="ruby-identifier">last_registered_at</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">device</span>.<span class="ruby-identifier">feedback_at</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;device #{device.id} -&gt; #{device.last_registered_at} &lt; #{device.feedback_at}&quot;</span>
+      <span class="ruby-identifier">device</span>.<span class="ruby-identifier">destroy</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;device #{device.id} -&gt; #{device.last_registered_at} not &lt; #{device.feedback_at}&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_devices_for_cert-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_devices_for_cert-method -->
+
+    
+      <div id="method-c-send_group_notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_group_notifications</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_group_notifications-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">send_group_notifications</span>
+  <span class="ruby-identifier">apps</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-identifier">apps</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">app</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">app</span>.<span class="ruby-identifier">send_group_notifications</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_group_notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_group_notifications-method -->
+
+    
+      <div id="method-c-send_notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_notifications</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_notifications-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">send_notifications</span>
+  <span class="ruby-identifier">apps</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-identifier">apps</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">app</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">app</span>.<span class="ruby-identifier">send_notifications</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># if !configatron.apn.cert.blank?</span>
+  <span class="ruby-comment">#   global_cert = File.read(configatron.apn.cert)</span>
+  <span class="ruby-comment">#   send_notifications_for_cert(global_cert, nil)</span>
+  <span class="ruby-comment"># end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_notifications-method -->
+
+    
+      <div id="method-c-send_notifications_for_cert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_notifications_for_cert</span><span
+            class="method-args">(the_cert, app_id)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_notifications_for_cert-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">send_notifications_for_cert</span>(<span class="ruby-identifier">the_cert</span>, <span class="ruby-identifier">app_id</span>)
+  <span class="ruby-comment"># unless self.unsent_notifications.nil? || self.unsent_notifications.empty?</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">app_id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-identifier">conditions</span> = <span class="ruby-string">&quot;app_id is null&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">conditions</span> = [<span class="ruby-string">&quot;app_id = ?&quot;</span>, <span class="ruby-identifier">app_id</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">open_for_delivery</span>({<span class="ruby-value">:cert</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">the_cert</span>}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conn</span>, <span class="ruby-identifier">sock</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Device</span>.<span class="ruby-identifier">find_each</span>(<span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">conditions</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dev</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">dev</span>.<span class="ruby-identifier">unsent_notifications</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">noty</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">noty</span>.<span class="ruby-identifier">message_for_sending</span>)
+        <span class="ruby-identifier">noty</span>.<span class="ruby-identifier">sent_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+        <span class="ruby-identifier">noty</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_notifications_for_cert-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_notifications_for_cert-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-cert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cert</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="cert-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cert</span>
+  (<span class="ruby-operator">::</span><span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>.<span class="ruby-identifier">production?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">apn_prod_cert</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">apn_dev_cert</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- cert-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- cert-method -->
+
+    
+      <div id="method-i-process_devices" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_devices</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retrieves a list of <a href="Device.html">APN::Device</a> instnces from
+Apple using the <code>devices</code> method. It then checks to see if the
+<code>last_registered_at</code> date of each <a
+href="Device.html">APN::Device</a> is before the date that Apple says the
+device is no longer accepting notifications then the device is deleted.
+Otherwise it is assumed that the application has been re-installed and is
+available for notifications.</p>
+
+<p>This can be run from the following Rake task:</p>
+
+<pre>$ rake apn:feedback:process</pre>
+          
+
+          
+          <div class="method-source-code" id="process_devices-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_devices</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">MissingCertificateError</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">process_devices_for_cert</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- process_devices-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- process_devices-method -->
+
+    
+      <div id="method-i-send_group_notification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_group_notification</span><span
+            class="method-args">(gnoty)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_group_notification-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_group_notification</span>(<span class="ruby-identifier">gnoty</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">MissingCertificateError</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">open_for_delivery</span>({<span class="ruby-value">:cert</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conn</span>, <span class="ruby-identifier">sock</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">devices</span>.<span class="ruby-identifier">find_each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">device</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">message_for_sending</span>(<span class="ruby-identifier">device</span>))
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">sent_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_group_notification-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_group_notification-method -->
+
+    
+      <div id="method-i-send_group_notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_group_notifications</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_group_notifications-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_group_notifications</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">MissingCertificateError</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unsent_group_notifications</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">unsent_group_notifications</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">unsent_group_notifications</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gnoty</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">failed</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">devices_to_send</span> = <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">devices</span>.<span class="ruby-identifier">count</span>
+      <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">devices</span>.<span class="ruby-identifier">find_in_batches</span>(<span class="ruby-value">:batch_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">devices</span><span class="ruby-operator">|</span>
+        <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">open_for_delivery</span>({<span class="ruby-value">:cert</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conn</span>, <span class="ruby-identifier">sock</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">devices</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">device</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">begin</span>
+              <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">message_for_sending</span>(<span class="ruby-identifier">device</span>))
+            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+              <span class="ruby-identifier">failed</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Sent to: #{devices_to_send - failed}/#{devices_to_send} &quot;</span>
+      <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">sent_at</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-identifier">gnoty</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_group_notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_group_notifications-method -->
+
+    
+      <div id="method-i-send_notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_notifications</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Opens a connection to the Apple <a href="../APN.html">APN</a> server and
+attempts to batch deliver an Array of group notifications.</p>
+
+<p>As each <a href="GroupNotification.html">APN::GroupNotification</a> is sent
+the <code>sent_at</code> column will be timestamped, so as to not be sent
+again.</p>
+          
+
+          
+          <div class="method-source-code" id="send_notifications-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_notifications</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">MissingCertificateError</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">send_notifications_for_cert</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">cert</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_notifications-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Protected Instance Methods</h3>
+
+    
+      <div id="method-i-log_connection_exception" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">log_connection_exception</span><span
+            class="method-args">(ex)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="log_connection_exception-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/app.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">log_connection_exception</span>(<span class="ruby-identifier">ex</span>)
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- log_connection_exception-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- log_connection_exception-method -->
+
+    
+    </section><!-- protected-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

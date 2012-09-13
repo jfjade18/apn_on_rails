@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>class APN::Notification - apn 0.5.1</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/apn_on_rails/app/models/apn/notification.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">APN::Base
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">::ActionView::Helpers::TextHelper</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-send_notifications">::send_notifications</a>
+    
+    <li><a href="#method-i-alert-3D">#alert=</a>
+    
+    <li><a href="#method-i-apple_hash">#apple_hash</a>
+    
+    <li><a href="#method-i-message_for_sending">#message_for_sending</a>
+    
+    <li><a href="#method-i-to_apple_json">#to_apple_json</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../APN.html">APN</a>
+  
+    <li><a href="../APN/App.html">APN::App</a>
+  
+    <li><a href="../APN/Connection.html">APN::Connection</a>
+  
+    <li><a href="../APN/Device.html">APN::Device</a>
+  
+    <li><a href="../APN/DeviceGrouping.html">APN::DeviceGrouping</a>
+  
+    <li><a href="../APN/Errors.html">APN::Errors</a>
+  
+    <li><a href="../APN/Errors/ExceededMessageSizeError.html">APN::Errors::ExceededMessageSizeError</a>
+  
+    <li><a href="../APN/Errors/MissingCertificateError.html">APN::Errors::MissingCertificateError</a>
+  
+    <li><a href="../APN/Feedback.html">APN::Feedback</a>
+  
+    <li><a href="../APN/Group.html">APN::Group</a>
+  
+    <li><a href="../APN/GroupNotification.html">APN::GroupNotification</a>
+  
+    <li><a href="../APN/Notification.html">APN::Notification</a>
+  
+    <li><a href="../APN/PullNotification.html">APN::PullNotification</a>
+  
+    <li><a href="../ApnOnRails.html">ApnOnRails</a>
+  
+    <li><a href="../ApnOnRails/Railtie.html">ApnOnRails::Railtie</a>
+  
+    <li><a href="../AddLaunchNotificationToApnPullNotifications.html">AddLaunchNotificationToApnPullNotifications</a>
+  
+    <li><a href="../ApnMigrationsGenerator.html">ApnMigrationsGenerator</a>
+  
+    <li><a href="../CreatePullNotifications.html">CreatePullNotifications</a>
+  
+    <li><a href="../MakeDeviceTokenIndexNonunique.html">MakeDeviceTokenIndexNonunique</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class APN::Notification</h1>
+
+  <div id="description" class="description">
+    
+<p>Represents the message you wish to send. An <a
+href="Notification.html">APN::Notification</a> belongs to an <a
+href="Device.html">APN::Device</a>.</p>
+
+<p>Example:</p>
+
+<pre>apn = APN::Notification.new
+apn.badge = 5
+apn.sound = 'my_sound.aiff'
+apn.alert = 'Hello!'
+apn.device = APN::Device.find(1)
+apn.save</pre>
+
+<p>To deliver call the following method:</p>
+
+<pre>APN::Notification.send_notifications</pre>
+
+<p>As each <a href="Notification.html">APN::Notification</a> is sent the
+<code>sent_at</code> column will be timestamped, so as to not be sent
+again.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-send_notifications" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_notifications</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_notifications-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/notification.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">send_notifications</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;The method APN::Notification.send_notifications is deprecated.  Use APN::App.send_notifications instead.&quot;</span>)
+  <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">send_notifications</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_notifications-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_notifications-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-alert-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">alert=</span><span
+            class="method-args">(message)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Stores the text alert message you want to send to the device.</p>
+
+<p>If the message is over 150 characters long it will get truncated to 150
+characters with a <code>...</code></p>
+          
+
+          
+          <div class="method-source-code" id="alert-3D-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/notification.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">alert=</span>(<span class="ruby-identifier">message</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">message</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">150</span>
+    <span class="ruby-identifier">message</span> = <span class="ruby-identifier">truncate</span>(<span class="ruby-identifier">message</span>, <span class="ruby-value">:length</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">150</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">write_attribute</span>(<span class="ruby-string">'alert'</span>, <span class="ruby-identifier">message</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- alert-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- alert-3D-method -->
+
+    
+      <div id="method-i-apple_hash" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apple_hash</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a Hash that will be the payload of an <a
+href="../APN.html">APN</a>.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">apn</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Notification</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">badge</span> = <span class="ruby-value">5</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">sound</span> = <span class="ruby-string">'my_sound.aiff'</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">alert</span> = <span class="ruby-string">'Hello!'</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">apple_hash</span> <span class="ruby-comment"># =&gt; {&quot;aps&quot; =&gt; {&quot;badge&quot; =&gt; 5, &quot;sound&quot; =&gt; &quot;my_sound.aiff&quot;, &quot;alert&quot; =&gt; &quot;Hello!&quot;}}</span>
+</pre>
+
+<p>Example 2:</p>
+
+<pre class="ruby"><span class="ruby-identifier">apn</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Notification</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">badge</span> = <span class="ruby-value">0</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">sound</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">custom_properties</span> = {<span class="ruby-string">&quot;typ&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">apple_hash</span> <span class="ruby-comment"># =&gt; {&quot;aps&quot; =&gt; {&quot;badge&quot; =&gt; 0, &quot;sound&quot; =&gt; &quot;1.aiff&quot;}, &quot;typ&quot; =&gt; &quot;1&quot;}</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="apple_hash-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/notification.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">apple_hash</span>
+  <span class="ruby-identifier">result</span> = {}
+  <span class="ruby-identifier">result</span>[<span class="ruby-string">'aps'</span>] = {}
+  <span class="ruby-identifier">result</span>[<span class="ruby-string">'aps'</span>][<span class="ruby-string">'alert'</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">alert</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">alert</span>
+  <span class="ruby-identifier">result</span>[<span class="ruby-string">'aps'</span>][<span class="ruby-string">'badge'</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">badge</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">badge</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sound</span>
+    <span class="ruby-identifier">result</span>[<span class="ruby-string">'aps'</span>][<span class="ruby-string">'sound'</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sound</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sound</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sound</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">present?</span>
+    <span class="ruby-identifier">result</span>[<span class="ruby-string">'aps'</span>][<span class="ruby-string">'sound'</span>] = <span class="ruby-string">&quot;1.aiff&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sound</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">TrueClass</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">custom_properties</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">custom_properties</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">result</span>[<span class="ruby-node">&quot;#{key}&quot;</span>] = <span class="ruby-node">&quot;#{value}&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- apple_hash-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- apple_hash-method -->
+
+    
+      <div id="method-i-message_for_sending" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">message_for_sending</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates the binary message needed to send to Apple.</p>
+          
+
+          
+          <div class="method-source-code" id="message_for_sending-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/notification.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">message_for_sending</span>
+  <span class="ruby-identifier">json</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_apple_json</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">%r\\u([0-9a-z]{4})/</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> [<span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&quot;U&quot;</span>)} <span class="ruby-comment"># This will create non encoded string. Otherwise the string is encoded from utf8 to ascii with unicode representation (i.e. \\u05d2)</span>
+  <span class="ruby-identifier">message</span> = <span class="ruby-node">&quot;\00\\00  #{self.device.to_hexa}\00##{json.length.chr}#{json}&quot;</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">ExceededMessageSizeError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">message</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">256</span>
+  <span class="ruby-identifier">message</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- message_for_sending-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- message_for_sending-method -->
+
+    
+      <div id="method-i-to_apple_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_apple_json</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates the JSON string required for an <a href="../APN.html">APN</a>
+message.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">apn</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Notification</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">badge</span> = <span class="ruby-value">5</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">sound</span> = <span class="ruby-string">'my_sound.aiff'</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">alert</span> = <span class="ruby-string">'Hello!'</span>
+<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">to_apple_json</span> <span class="ruby-comment"># =&gt; '{&quot;aps&quot;:{&quot;badge&quot;:5,&quot;sound&quot;:&quot;my_sound.aiff&quot;,&quot;alert&quot;:&quot;Hello!&quot;}}'</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="to_apple_json-source">
+            <pre><span class="ruby-comment"># File lib/apn_on_rails/app/models/apn/notification.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_apple_json</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">apple_hash</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_apple_json-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_apple_json-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

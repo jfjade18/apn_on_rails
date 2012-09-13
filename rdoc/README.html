@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=US-ASCII" http-equiv="Content-Type">
+
+<title>README - apn 0.5.1</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./APN.html">APN</a>
+  
+    <li><a href="./APN/App.html">APN::App</a>
+  
+    <li><a href="./APN/Connection.html">APN::Connection</a>
+  
+    <li><a href="./APN/Device.html">APN::Device</a>
+  
+    <li><a href="./APN/DeviceGrouping.html">APN::DeviceGrouping</a>
+  
+    <li><a href="./APN/Errors.html">APN::Errors</a>
+  
+    <li><a href="./APN/Errors/ExceededMessageSizeError.html">APN::Errors::ExceededMessageSizeError</a>
+  
+    <li><a href="./APN/Errors/MissingCertificateError.html">APN::Errors::MissingCertificateError</a>
+  
+    <li><a href="./APN/Feedback.html">APN::Feedback</a>
+  
+    <li><a href="./APN/Group.html">APN::Group</a>
+  
+    <li><a href="./APN/GroupNotification.html">APN::GroupNotification</a>
+  
+    <li><a href="./APN/Notification.html">APN::Notification</a>
+  
+    <li><a href="./APN/PullNotification.html">APN::PullNotification</a>
+  
+    <li><a href="./ApnOnRails.html">ApnOnRails</a>
+  
+    <li><a href="./ApnOnRails/Railtie.html">ApnOnRails::Railtie</a>
+  
+    <li><a href="./AddLaunchNotificationToApnPullNotifications.html">AddLaunchNotificationToApnPullNotifications</a>
+  
+    <li><a href="./ApnMigrationsGenerator.html">ApnMigrationsGenerator</a>
+  
+    <li><a href="./CreatePullNotifications.html">CreatePullNotifications</a>
+  
+    <li><a href="./MakeDeviceTokenIndexNonunique.html">MakeDeviceTokenIndexNonunique</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-APN+on+Rails+%28Apple+Push+Notifications+on+Rails%29"><a href="APN.html">APN</a> on Rails (Apple Push Notifications on Rails)</h1>
+
+<p><a href="APN.html">APN</a> on Rails is a Ruby on Rails gem that allows you
+to easily add Apple Push Notification (iPhone) support to your Rails
+application.</p>
+
+<p>It supports:</p>
+<ul><li>
+<p>Multiple iPhone apps managed from the same Rails application as well as a
+legacy default "app" with certs stored in config</p>
+</li><li>
+<p>Individual notifications and group notifications</p>
+</li><li>
+<p>Alerts, badges, sounds, and custom properties in notifications</p>
+</li><li>
+<p>Pull notifications</p>
+</li><li>
+<p>Rails 3.2 and above</p>
+</li></ul>
+
+<h2 id="label-Feature+Descriptions">Feature Descriptions</h2>
+
+<p>Multiple iPhone Apps: In previous versions of this gem a single Rails
+application was set up to manage push notifications for a single iPhone
+app.  In many cases it is useful to have a single Rails app manage push
+notifications for multiple iPhone apps.  With the addition of an <a
+href="APN/App.html">APN::App</a> model, this is now possible.  The
+certificates are now stored on instances of <a
+href="APN/App.html">APN::App</a> and devices are intended to be associated
+with a particular app.  For compatibility with existing implementations it
+is still possible to create devices that are not associated with an <a
+href="APN/App.html">APN::App</a> and to send individual notifications to
+them using the certs stored in the config directory.</p>
+
+<p>Individual and Group Notifications: Previous versions of this gem treated
+each notification individually and did not provide a built-in way to send a
+broadcast notification to a group of devices.  Group notifications are now
+built into the gem.  A group notification is associated with a group of
+devices and shares its contents across the entire group of devices.  (Group
+notifications are only available for groups of devices associated with an
+<a href="APN/App.html">APN::App</a>)</p>
+
+<p>Notification Content Areas: Notifications may contain alerts, badges,
+sounds, and custom properties.</p>
+
+<p>Pull Notifications: This version of the gem supports an alternative
+notification method that relies on pulls from client devices and does not
+interact with the Apple Push Notification servers.  This feature may be
+used entirely independently of the push notification features.  Pull
+notifications may be created for an app.  A client app can query for the
+most recent pull notification available since a given date to retrieve any
+notifications waiting for it.</p>
+
+<h2 id="label-Version+0.4.1+Notes">Version 0.4.1 Notes</h2>
+<ul><li>
+<p>Backwards compatibility.  0.4.0 required a manual upgrade to associate
+existing and new devices with an <a href="APN/App.html">APN::App</a> model.
+This version allows continued use of devices that are associated with a
+default "app" that stores its certificates in the config directory.  This
+ought to allow upgrade to this version without code changes.</p>
+</li><li>
+<p>Batched finds.  Finds on the <a href="APN/Device.html">APN::Device</a>
+model that can return large numbers of records have been batched to limit
+memory impact.</p>
+</li><li>
+<p>Custom properties migration.  At a pre-0.4.0 version the custom_properties
+attribute was added to the migration template that created the
+notifications table.  This introduced a potential problem for gem users who
+had previously run this migration.  The custom_properties alteration to the
+apn_notifications table has been moved to its own migration and should work
+regardless of whether your apn_notifications table already has a
+custom_properties attribute.</p>
+</li><li>
+<p>last_registered_at changed to work intuitively.  The last_registered_at
+attribute of devices was being updated only on creation potentially causing
+a bug in which a device that opts out of APNs and then opts back in before
+apn_on_rails received feedback about it might miss a period of APNs that it
+should receive.</p>
+</li></ul>
+
+<h2 id="label-Acknowledgements%3A">Acknowledgements:</h2>
+
+<p>From Mark Bates:</p>
+
+<p>This gem is a re-write of a plugin that was written by Fabien Penso and Sam
+Soffes. Their plugin was a great start, but it just didn't quite reach the
+level I hoped it would. I've re-written, as a gem, added a ton of tests,
+and I would like to think that I made it a little nicer and easier to use.</p>
+
+<p>From Rebecca Nesson (PRX.org):</p>
+
+<p>This gem extends the original version that Mark Bates adapted.  His gem did
+the hard work of setting up and handling all communication with the Apple
+push notification servers.</p>
+
+<p>From Jed Seculles:</p>
+
+<p>This gem extends the version that PRX adapted. I would like to acknowledge
+the changes and fixes made by Rami Grossman (ramigg). I'm trying to make
+this gem compatible to Rails 3.2 and above. I'll update the status when the
+version is working properly already.</p>
+
+<h2 id="label-Converting+Your+Certificate%3A">Converting Your Certificate:</h2>
+
+<p>Once you have the certificate from Apple for your application, export your
+key and the apple certificate as p12 files. Here is a quick walkthrough on
+how to do this:</p>
+<ol><li>
+<p>Click the disclosure arrow next to your certificate in Keychain Access and
+select the certificate and the key.</p>
+</li><li>
+<p>Right click and choose `Export 2 items...`.</p>
+</li><li>
+<p>Choose the p12 format from the drop down and name it `cert.p12`.</p>
+</li></ol>
+
+<p>Now covert the p12 file to a pem file:</p>
+
+<pre>$ openssl pkcs12 -in cert.p12 -out apple_push_notification_production.pem -nodes -clcerts</pre>
+
+<p>If you are using a development certificate, then change the name to
+apple_push_notification_development.pem instead.</p>
+
+<p>Store the contents of the certificate files on the app model for the app
+you want to send notifications to.</p>
+
+<h2 id="label-Installing%3A">Installing:</h2>
+
+<h3 id="label-Stable+%28RubyForge%29%3A">Stable (RubyForge):</h3>
+
+<pre>$ sudo gem install apn_on_rails</pre>
+
+<h3 id="label-Edge+%28GitHub%29%3A">Edge (GitHub):</h3>
+
+<pre>$ sudo gem install PRX-apn_on_rails.git --source=http://gems.github.com</pre>
+
+<h3 id="label-Rails+Gem+Management%3A">Rails Gem Management:</h3>
+
+<p>If you like to use the built in Rails gem management, on your Gemfile:</p>
+
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">'apn_on_rails'</span>, :<span class="ruby-identifier">git</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'git@github.com:jfjade18/apn_on_rails.git'</span>
+</pre>
+
+<h2 id="label-Setup+and+Configuration%3A">Setup and Configuration:</h2>
+
+<p>Once you have the gem installed via your favorite gem installation, you
+need to require it so you can start to use it:</p>
+
+<p>Add the following require, wherever it makes sense to you:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'apn_on_rails'</span>
+</pre>
+
+<p>You also need to add the following to your Rakefile so you can use the Rake
+tasks that ship with <a href="APN.html">APN</a> on Rails:</p>
+
+<pre class="ruby"><span class="ruby-keyword">begin</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">'apn_on_rails_tasks'</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">MissingSourceFile</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Now, to create the tables you need for <a href="APN.html">APN</a> on Rails,
+run the following task:</p>
+
+<pre>$ rails generate apn_migrations</pre>
+
+<p><a href="APN.html">APN</a> on Rails uses the Configatron gem, <a
+href="http://github.com/markbates/configatron/tree/master">github.com/markbates/configatron/tree/master</a>,
+to configure itself. (With the change to multi-app support, the
+certifications are stored in the database rather than in the config
+directory, however, it is still possible to use the default "app" and the
+certificates stored in the config directory.  For this setup, the following
+configurations apply.) <a href="APN.html">APN</a> on Rails has the
+following default configurations that you change as you see fit:</p>
+
+<pre class="ruby"><span class="ruby-comment"># development (delivery):</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">passphrase</span> <span class="ruby-comment"># =&gt; ''</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">port</span> <span class="ruby-comment"># =&gt; 2195</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">host</span> <span class="ruby-comment"># =&gt; 'gateway.sandbox.push.apple.com'</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">cert</span> <span class="ruby-comment">#=&gt; File.join(::Rails.root, 'config', 'apple_push_notification_development.pem')</span>
+
+<span class="ruby-comment"># production (delivery):</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">host</span> <span class="ruby-comment"># =&gt; 'gateway.push.apple.com'</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">cert</span> <span class="ruby-comment">#=&gt; File.join(::Rails.root, 'config', 'apple_push_notification_production.pem')</span>
+
+<span class="ruby-comment"># development (feedback):</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">feedback</span>.<span class="ruby-identifier">passphrase</span> <span class="ruby-comment"># =&gt; ''</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">feedback</span>.<span class="ruby-identifier">port</span> <span class="ruby-comment"># =&gt; 2196</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">feedback</span>.<span class="ruby-identifier">host</span> <span class="ruby-comment"># =&gt; 'feedback.sandbox.push.apple.com'</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">feedback</span>.<span class="ruby-identifier">cert</span> <span class="ruby-comment">#=&gt; File.join(::Rails.root, 'config', 'apple_push_notification_development.pem')</span>
+
+<span class="ruby-comment"># production (feedback):</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">feedback</span>.<span class="ruby-identifier">host</span> <span class="ruby-comment"># =&gt; 'feedback.push.apple.com'</span>
+<span class="ruby-identifier">configatron</span>.<span class="ruby-identifier">apn</span>.<span class="ruby-identifier">feedback</span>.<span class="ruby-identifier">cert</span> <span class="ruby-comment">#=&gt; File.join(::Rails.root, 'config', 'apple_push_notification_production.pem')</span>
+</pre>
+
+<p>That's it, now you're ready to start creating notifications.</p>
+
+<h3 id="label-Upgrade+Notes%3A">Upgrade Notes:</h3>
+
+<p>If you are upgrading to a new version of <a href="APN.html">APN</a> on
+Rails you should always run:</p>
+
+<pre>$ rails generate apn_migrations</pre>
+
+<p>That way you ensure you have the latest version of the database tables
+needed.</p>
+
+<h2 id="label-Example+%28assuming+you+have+created+an+app+and+stored+your+keys+on+it%29%3A">Example (assuming you have created an app and stored your keys on it):</h2>
+
+<pre class="ruby">$ <span class="ruby-identifier">rails</span> <span class="ruby-identifier">console</span>
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">app</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">App</span>.<span class="ruby-identifier">create</span>(:<span class="ruby-identifier">name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;My App&quot;</span>, :<span class="ruby-identifier">apn_dev_cert</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PASTE YOUR DEV CERT HERE&quot;</span>, :<span class="ruby-identifier">apn_prod_cert</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;PASTE YOUR PROD CERT HERE&quot;</span>)
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">device</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Device</span>.<span class="ruby-identifier">create</span>(:<span class="ruby-identifier">token</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX&quot;</span>,:<span class="ruby-identifier">app_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">app</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">notification</span> = <span class="ruby-constant">APN</span><span class="ruby-operator">::</span><span class="ruby-constant">Notification</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">notification</span>.<span class="ruby-identifier">device</span> = <span class="ruby-identifier">device</span>
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">notification</span>.<span class="ruby-identifier">badge</span> = <span class="ruby-value">5</span>
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">notification</span>.<span class="ruby-identifier">sound</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">notification</span>.<span class="ruby-identifier">alert</span> = <span class="ruby-string">&quot;foobar&quot;</span>
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">notification</span>.<span class="ruby-identifier">custom_properties</span> = {:<span class="ruby-identifier">link</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://www.prx.org&quot;</span>}
+<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-identifier">notification</span>.<span class="ruby-identifier">save</span>
+</pre>
+
+<p>You can use the following Rake task to deliver your individual
+notifications:</p>
+
+<pre>$ rake apn:notifications:deliver</pre>
+
+<p>And the following task to deliver your group notifications:</p>
+
+<pre>$ rake apn:group_notifications:deliver</pre>
+
+<p>The Rake task will find any unsent notifications in the database. If there
+aren't any notifications it will simply do nothing. If there are
+notifications waiting to be delivered it will open a single connection to
+Apple and push all the notifications through that one connection. Apple
+does not like people opening/closing connections constantly, so it's pretty
+important that you are careful about batching up your notifications so
+Apple doesn't shut you down.</p>
+
+<p>Released under the MIT license.</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
