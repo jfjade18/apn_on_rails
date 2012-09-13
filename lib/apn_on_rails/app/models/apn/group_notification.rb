@@ -9,6 +9,8 @@ class APN::GroupNotification < APN::Base
   has_many :device_groupings, :through => :group
 
   validates_presence_of :group_id
+  
+  attr_accessible :device_language, :sound, :alert, :badge, :custom_properties, :sent_at
 
   def devices
     self.group.devices

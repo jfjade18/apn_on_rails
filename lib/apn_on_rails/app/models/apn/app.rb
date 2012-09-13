@@ -8,6 +8,8 @@ class APN::App < APN::Base
   has_many :group_notifications, :through => :groups
   has_many :unsent_group_notifications, :through => :groups
 
+  attr_accessible :apn_dev_cert, :apn_prod_cert
+
   def cert
     (::Rails.env.production? ? apn_prod_cert : apn_dev_cert)
   end
@@ -32,10 +34,10 @@ class APN::App < APN::Base
     apps.each do |app|
       app.send_notifications
     end
-    if !configatron.apn.cert.blank?
-      global_cert = File.read(configatron.apn.cert)
-      send_notifications_for_cert(global_cert, nil)
-    end
+    # if !configatron.apn.cert.blank?
+    #   global_cert = File.read(configatron.apn.cert)
+    #   send_notifications_for_cert(global_cert, nil)
+    # end
   end
 
   def self.send_notifications_for_cert(the_cert, app_id)
